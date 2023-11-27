@@ -10,6 +10,7 @@ function App() {
     projects: []
   });
 
+  //new project
   function addProjectHandler() {
     setProjectsState(prevState => {
       return {
@@ -19,6 +20,7 @@ function App() {
     })
   }
 
+  //add project
   function handleAddProject(projectData) {
     setProjectsState(prevState => {
       const newProject = {
@@ -28,12 +30,13 @@ function App() {
 
       return {
         ...prevState,
+        selectedProjectId: undefined,
         projects: [...prevState.projects, newProject],
       }
     })
   }
 
-  console.log(projectsState);
+  // console.log(projectsState);
 
   let content;
 
@@ -45,7 +48,10 @@ function App() {
 
   return (
     <main className="h-screen my-8 flex gap-8">      
-      <ProjectsSidebar onAddProject={addProjectHandler}/>
+      <ProjectsSidebar 
+        onAddProject={addProjectHandler} 
+        projects={projectsState.projects}
+      />
       {content}
     </main>
   );
