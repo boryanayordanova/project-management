@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export default function NewTask({onAdd, onDelte}){
-    const [eneterdTask, setEnteredTask] = useState();
+    const [eneterdTask, setEnteredTask] = useState("");
 
     function handleChange(event) {
         setEnteredTask(event.target.value);
@@ -9,6 +9,9 @@ export default function NewTask({onAdd, onDelte}){
     }
 
     function handleClick() {
+        if(eneterdTask.trim() === ""){
+            return;
+        }
         onAdd(eneterdTask);
         setEnteredTask('');
     }
